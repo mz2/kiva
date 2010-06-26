@@ -27,6 +27,8 @@
 @synthesize loanAmount = _loanAmount;
 @synthesize status = _status;
 @synthesize sector = _sector;
+@synthesize town = _town;
+@synthesize country = _country;
 
 //=========================================================== 
 // - (id)init
@@ -38,6 +40,8 @@
     if (self) {
         [self setName: nil];
         [self setLocation: nil];
+		[self setTown: nil];
+		[self setCountry: nil];
         [self setPostedDate: nil];
         [self setActivity: nil];
         [self setIdentifier: 0];
@@ -55,6 +59,9 @@
 }
 
 -(id) initFromDictionary:(NSDictionary*) dict {
+	NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+	[dateFormatter setTimeStyle:NSDateFormatterFullStyle];
+	[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
 	self = [self init];
 	if (self != nil) {
 		[self setName: [dict objectForKey:@"name"]];
@@ -71,7 +78,13 @@
 											  horizontalAccuracy:kCLLocationAccuracyKilometer 
 												verticalAccuracy:kCLLocationAccuracyKilometer 
 													   timestamp:[NSDate date]] autorelease]];
-		[self setPostedDate: [dict objectForKey:@"posted_date"]];
+		[self setCountry: [[dict objectForKey:@"location"] objectForKey:@"country"]];
+		[self setTown: [[dict objectForKey:@"location"] objectForKey:@"town"]];
+		
+		[self setPostedDate: [dateFormatter dateFromString: [dict objectForKey: @"posted_date"]]];
+		if (self.postedDate == nil) {
+			PCLog(@"WARNING! Parsing posted date failed from string '%@'", [dict objectForKey:@"posted_date"]);
+		}
 		[self setActivity: [dict objectForKey:@"activity"]];
 		[self setIdentifier: [[dict objectForKey:@"id"] intValue]];
 		[self setUse: [dict objectForKey: @"use"]];
@@ -113,6 +126,15 @@
 	return [self activity];
 }
 
+-(NSString*) formattedPostedDate {
+	NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+	[formatter setLocale: [NSLocale currentLocale]];
+	[formatter setDateStyle: NSDateFormatterMediumStyle];
+	[formatter setTimeStyle: NSDateFormatterNoStyle];
+	
+	return [formatter stringFromDate: self.postedDate];
+}
+
 //=========================================================== 
 // dealloc
 //=========================================================== 
@@ -122,6 +144,10 @@
     _name = nil;
     [_location release];
     _location = nil;
+	[_country release];
+	_country = nil;
+	[_town release];
+	_town = nil;
     [_postedDate release];
     _postedDate = nil;
     [_activity release];

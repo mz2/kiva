@@ -24,7 +24,10 @@
 @synthesize queue = _queue;
 
 -(void) requestNewLoansOnPage:(NSUInteger)page {
-	PCLog(@"Requesting new loans");
+	PCLog(@"Requesting new loans on page %d", page);
+	if (page == 1) {//reset
+		_loanPagesRetrieved = 0;
+	}
 	ASIHTTPRequest *req = [ASIHTTPRequest requestWithURL:
 						   [NSURL URLWithString:[NSString stringWithFormat:@"http://api.kivaws.org/v1/loans/newest.json?page=%d",page]]];
 	req.delegate = self;
@@ -67,10 +70,8 @@
 		for (KILoan *loan in loans) {
 			if (loan.imageItem != nil) {
 				NSNumber *identifier = [NSNumber numberWithInt: loan.imageItem.identifier];
-				PCLog(@"IDENTIFIER:%@", identifier);
 				[_mediaItemsByID setObject: loan.imageItem 
 									forKey: identifier];
-				PCLog(@"%@",_mediaItemsByID);
 			}
 		}
 		
@@ -144,6 +145,12 @@
 		
 		UIImage *resizedTo50WidthImage  = [UIImage imageWithImage:img scaleToWidth: 50];
 		
+		err = nil;
+		NSData *resizedTo50JpegData = UIImageJPEGRepresentation(resizedTo50WidthImage, 1.0);
+		[resizedTo50JpegData writeToFile:[mediaItem pathForSize:KIMediaItemSizeResizedToMinDim50] 
+								 options:0 
+								   error:&err];
+		
 		UIImage *borderedImage = [resizedTo50WidthImage borderedImageWithRect:CGRectMake(0, 0, resizedTo50WidthImage.size.width, resizedTo50WidthImage.size.height) 
 													 radius:6.0 
 												borderColor:[UIColor clearColor] 
@@ -155,7 +162,7 @@
 		}
 		
 		err = nil;
-		[pngDataBordered writeToFile:[mediaItem pathForSize:KIMediaItemSizeResizedToMinDim42Bordered] 
+		[pngDataBordered writeToFile:[mediaItem pathForSize:KIMediaItemSizeResizedToMinDim50Bordered] 
 					  options:0 
 						error:&err];
 	}

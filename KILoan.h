@@ -16,6 +16,9 @@
 	NSString *_name;
 	
 	CLLocation *_location;
+	NSString *_town;
+	NSString *_country;
+	
 	NSDate *_postedDate;
 	NSString *_activity;
 	NSUInteger _identifier;
@@ -36,7 +39,11 @@
 
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, retain) CLLocation *location;
+@property (nonatomic, retain) NSString *town;
+@property (nonatomic, retain) NSString *country;
+
 @property (nonatomic, retain) NSDate *postedDate;
+@property (nonatomic, retain, readonly) NSString *formattedPostedDate;
 @property (nonatomic, copy) NSString *activity;
 @property (nonatomic) NSUInteger identifier;
 @property (nonatomic, copy) NSString *use;

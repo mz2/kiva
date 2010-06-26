@@ -15,8 +15,8 @@ typedef enum KIMediaItemSize {
 	KIMediaItemSizeW450H360 = 4,
 	KIMediaItemSizeFullSize = 5,
 	KIMediaItemSizeResizedToW32H32 = 6,
-	KIMediaItemSizeResizedToMinDim42 = 7,
-	KIMediaItemSizeResizedToMinDim42Bordered = 8
+	KIMediaItemSizeResizedToMinDim50 = 7,
+	KIMediaItemSizeResizedToMinDim50Bordered = 8
 } KIMediaItemSize;
 
 @interface KIMediaItem : NSObject {

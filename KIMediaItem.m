@@ -73,9 +73,9 @@
 		return @"fullsize";
 	} else if (size == KIMediaItemSizeResizedToW32H32) {
 		return @"w32h32";
-	} else if (size == KIMediaItemSizeResizedToMinDim42) {
+	} else if (size == KIMediaItemSizeResizedToMinDim50) {
 		return @"dim42max";
-	} else if (size == KIMediaItemSizeResizedToMinDim42Bordered) {
+	} else if (size == KIMediaItemSizeResizedToMinDim50Bordered) {
 		return @"dim42max-bordered";
 	}
 	
