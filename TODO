@@ -1,10 +1,8 @@
-- Implement a GUI that works with the iPhone's smaller screen resolution 
+- Implement a GUI that works with the iPhone's smaller screen resolution (currently works only on the iPad)
 
-
-- Lay out overlapping images smarter on the map. Suggested solution:
-1) compute a distance matrix between all loan items
-2) do hierarchical clustering
-3) collapse clusters below cutoff X 
-4) lay them out around a circle. Circle's radius should depend on the zooming state of the map.
-
-This can get a bit tricky because the clustering should really be done again after every scrolling event, and the distance matrix should be incrementally updated with more / less items without a full recompute.
+- Lay out overlapping images smarter on the map. Suggested solution is outlined below.
+After each map scrolling event / loan feed update:
+1) compute a distance matrix between all loan items.
+2) cluster the distance matrix.
+3) collapse clusters below cutoff X  (cutoff depends on map scrolling state).
+4) lay them out around the midpoint of the cluster (medoid?), for example in a circle. Circle's radius should depend on the zooming state of the map.
