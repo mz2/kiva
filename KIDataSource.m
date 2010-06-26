@@ -144,7 +144,7 @@
 		
 		UIImage *resizedTo50WidthImage  = [UIImage imageWithImage:img scaleToWidth: 50];
 		
-		UIImage *borderedImage = [resizedTo40WidthImage borderedImageWithRect:CGRectMake(0, 0, resizedTo50WidthImage.size.width, resizedTo40WidthImage.size.height) 
+		UIImage *borderedImage = [resizedTo50WidthImage borderedImageWithRect:CGRectMake(0, 0, resizedTo50WidthImage.size.width, resizedTo50WidthImage.size.height) 
 													 radius:6.0 
 												borderColor:[UIColor clearColor] 
 												borderWidth:0.0];
