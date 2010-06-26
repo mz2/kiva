@@ -1,0 +1,6 @@
+[submodule "external/asi-http-request"]
+	path = external/asi-http-request
+	url = http://github.com/pokeb/asi-http-request.git
+[submodule "external/yajl-objc"]
+	path = external/yajl-objc
+	url = http://github.com/gabriel/yajl-objc.git
