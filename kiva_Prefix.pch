@@ -1,0 +1,20 @@
+//
+// Prefix header for all source files of the 'kiva' target in the 'kiva' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
+	#import "UIImage_Resize.h"
+
+	#import "KIConstants.h"
+	#import "INResizeImageAllocator.h"
+	#import "ImageExtras.h"
+
+#ifdef DEBUG
+#define PCLog(...) printf("%s: %s\n", [[NSString stringWithFormat:@"%s:%u", [[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__] UTF8String], [[NSString stringWithFormat:__VA_ARGS__] UTF8String])
+#else
+# define PCLog(...) 
+#endif
+
+#endif
