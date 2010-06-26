@@ -18,6 +18,7 @@
 	UILabel *_activityLabel;
 	UITextView *_loanUseTextView;
 	
+	id parentController;
 	
 	KILoan *_loan;
 }
@@ -30,6 +31,11 @@
 @property (nonatomic, retain) IBOutlet UILabel *activityLabel;
 @property (nonatomic, retain) IBOutlet UITextView *loanUseTextView;
 
+@property (nonatomic, assign) IBOutlet id parentController;
+
 @property (nonatomic, retain) KILoan *loan;
+
+-(IBAction) showMoreInfoAboutPartner:(id) sender;
+-(IBAction) showMoreInfoAboutLoan:(id) sender;
 
 @end

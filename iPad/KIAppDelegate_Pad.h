@@ -7,30 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MapKit/MapKit.h>
-@class KIMapPopContentController;
 
-@interface KIAppDelegate_Pad : NSObject <UIApplicationDelegate,MKMapViewDelegate,UIPopoverControllerDelegate> {
+@interface KIAppDelegate_Pad : NSObject <UIApplicationDelegate> {
     UIWindow *window;
 	
-	MKMapView *_mapView;
 	
-	UIPopoverController *_popOverController;
-	KIMapPopContentController *_popContentController;
-	
-	
-	@protected
-	NSMutableSet *_loans;
+	UINavigationController *_navigationController;
 }
 
-@property (nonatomic, retain) NSMutableSet *loans;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet MKMapView *mapView;
-
-@property (nonatomic, retain) UIPopoverController *popOverController;
-@property (nonatomic, retain) IBOutlet KIMapPopContentController *popContentController;
-
--(IBAction) refresh:(id) sender;
+@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 
 @end
 

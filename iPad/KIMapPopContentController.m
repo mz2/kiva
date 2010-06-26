@@ -9,6 +9,8 @@
 #import "KIMapPopContentController.h"
 #import "KILoan.h"
 #import "KIImageItem.h"
+#import "KIAppDelegate_Pad.h"
+#import "KIMapController.h"
 
 @implementation KIMapPopContentController
 @synthesize nameLabel = _nameLabel;
@@ -18,6 +20,7 @@
 @synthesize loanProgressIndicator = _loanProgressIndicator;
 @synthesize activityLabel = _activityLabel;
 @synthesize loanUseTextView = _loanUseTextView;
+@synthesize parentController = _parentController;
 
 @synthesize loan = _loan;
 
@@ -47,7 +50,14 @@
 */
 
 -(void) contentReceived:(NSNotification*) notification {
+	KIMediaItem *item = notification.object;
+	PCLog(@"Content received for media item %d (%@)", item.identifier, item);
+	KILoan *loan = item.referringObject;
+	if (loan == nil) return;
 	
+	if ([loan isEqual: self.loan] && [self.loan.imageItem contentIsAvailableForSize: KIMediaItemSizeW80H80]) {
+		self.image.image = [loan.imageItem imageForSize: KIMediaItemSizeW80H80];
+	}
 }
 
 -(void) setLoan:(KILoan*) loan {
@@ -83,6 +93,22 @@
 	[self didChangeValueForKey:@"loan"];
 }
 
+-(IBAction) showMoreInfoAboutPartner:(id) sender {
+	
+	[[(KIMapController*)[self parentController] popOverController] dismissPopoverAnimated: YES];
+	[(KIMapController*)[self parentController] showURL: [NSURL URLWithString:
+														  [NSString stringWithFormat:
+														   @"http://www.kiva.org/lend/%d",self.loan.identifier]]];
+}
+
+-(IBAction) showMoreInfoAboutLoan:(id) sender {
+	[[(KIMapController*)[self parentController] popOverController] dismissPopoverAnimated: YES];
+	[(KIMapController*)[self parentController] showURL: [NSURL URLWithString:
+														 [NSString stringWithFormat:
+														  @"http://www.kiva.org/lend/%d",self.loan.identifier]]];
+}
+
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Overriden to allow any orientation.
     return YES;
@@ -104,9 +130,26 @@
 }
 
 
-- (void)dealloc {
-    [super dealloc];
+- (void)dealloc
+{
+	[_nameLabel release];
+	_nameLabel = nil;
+	[_locationLabel release];
+	_locationLabel = nil;
+	[_image release];
+	_image = nil;
+	[_loanAmountProgressLabel release];
+	_loanAmountProgressLabel = nil;
+	[_loanProgressIndicator release];
+	_loanProgressIndicator = nil;
+	[_activityLabel release];
+	_activityLabel = nil;
+	[_loanUseTextView release];
+	_loanUseTextView = nil;
+	[_loan release];
+	_loan = nil;
+	
+	[super dealloc];
 }
-
 
 @end

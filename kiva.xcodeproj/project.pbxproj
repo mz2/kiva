@@ -49,6 +49,8 @@
 		5F9CBF0D11D4133100D2D85B /* KIPagingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9CBF0C11D4133100D2D85B /* KIPagingInfo.m */; };
 		5F9CBF6E11D418B400D2D85B /* KIConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9CBF6D11D418B400D2D85B /* KIConstants.m */; };
 		5F9CC00211D41A2F00D2D85B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9CC00111D41A2F00D2D85B /* MapKit.framework */; };
+		5FC836C411D6A67B007B19F9 /* KIWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC836C311D6A67B007B19F9 /* KIWebController.m */; };
+		5FC836DC11D6A8A7007B19F9 /* KIMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC836DA11D6A8A7007B19F9 /* KIMapController.m */; };
 		5FEB05FC11D6065C00994E29 /* ImageExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEB05FB11D6065C00994E29 /* ImageExtras.m */; };
 		5FEB060311D6067900994E29 /* INResizeImageAllocator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEB060211D6067900994E29 /* INResizeImageAllocator.m */; };
 		5FEB07E011D626E900994E29 /* KIMapPopContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEB07DE11D626E900994E29 /* KIMapPopContentController.m */; };
@@ -130,6 +132,10 @@
 		5F9CBF6C11D418B400D2D85B /* KIConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIConstants.h; sourceTree = "<group>"; };
 		5F9CBF6D11D418B400D2D85B /* KIConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIConstants.m; sourceTree = "<group>"; };
 		5F9CC00111D41A2F00D2D85B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		5FC836C211D6A67B007B19F9 /* KIWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIWebController.h; sourceTree = "<group>"; };
+		5FC836C311D6A67B007B19F9 /* KIWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIWebController.m; sourceTree = "<group>"; };
+		5FC836D911D6A8A7007B19F9 /* KIMapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIMapController.h; sourceTree = "<group>"; };
+		5FC836DA11D6A8A7007B19F9 /* KIMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIMapController.m; sourceTree = "<group>"; };
 		5FEB05FA11D6065C00994E29 /* ImageExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageExtras.h; sourceTree = "<group>"; };
 		5FEB05FB11D6065C00994E29 /* ImageExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageExtras.m; sourceTree = "<group>"; };
 		5FEB060111D6067900994E29 /* INResizeImageAllocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INResizeImageAllocator.h; sourceTree = "<group>"; };
@@ -187,6 +193,10 @@
 				2860E32D111B888700E27156 /* KIMainWindow_Pad.xib */,
 				5FEB07DD11D626E900994E29 /* KIMapPopContentController.h */,
 				5FEB07DE11D626E900994E29 /* KIMapPopContentController.m */,
+				5FC836C211D6A67B007B19F9 /* KIWebController.h */,
+				5FC836C311D6A67B007B19F9 /* KIWebController.m */,
+				5FC836D911D6A8A7007B19F9 /* KIMapController.h */,
+				5FC836DA11D6A8A7007B19F9 /* KIMapController.m */,
 			);
 			path = iPad;
 			sourceTree = "<group>";
@@ -456,6 +466,8 @@
 				5FEB05FC11D6065C00994E29 /* ImageExtras.m in Sources */,
 				5FEB060311D6067900994E29 /* INResizeImageAllocator.m in Sources */,
 				5FEB07E011D626E900994E29 /* KIMapPopContentController.m in Sources */,
+				5FC836C411D6A67B007B19F9 /* KIWebController.m in Sources */,
+				5FC836DC11D6A8A7007B19F9 /* KIMapController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
